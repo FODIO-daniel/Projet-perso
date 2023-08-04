@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+
+<!-- Mirrored from myrathemes.com/lunoz/layouts/vertical/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Jun 2023 14:36:13 GMT -->
+<head>
+    <meta charset="utf-8" />
+    <title>Tableau de bord</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="MyraStudio" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}">
+
+    <!-- App css -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/css/theme.min.css' %}" rel="stylesheet" type="text/css" />
+   
+
+</head>
+
+<body>
+
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+
+        <header id="page-topbar">
+            <div class="navbar-header">
+
+                <div class="d-flex align-items-left">
+                    
+
+                    <div class="dropdown d-none d-sm-inline-block">
+                        
+                        
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center">
+
+                    
+                    
+                    
+                    <div class="dropdown d-inline-block ml-2">
+                        <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img  
+                                >
+                            <span class="d-none d-sm-inline-block ml-1">Bienvenu Mr/Mme {{ nom }} dans votre application {{ fonction }}</span>
+                            <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            
+                            <a class="dropdown-item d-flex align-items-center justify-content-between"
+                            href="{% url 'recrutement:mon-compte' %}">
+                                <span>Profile</span>
+                                <span>
+                                    <span class="badge badge-pill badge-warning">1</span>
+                                </span>
+                            </a>
+                            
+                           
+                            <a class="dropdown-item d-flex align-items-center justify-content-between"
+                            href="{% url 'recrutement:logout-recruteur' %}">
+                                <span>Log Out</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="vertical-menu">
+
+            <div data-simplebar class="h-100">
+
+                
+
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <!-- Left Menu Start -->
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        <li class="menu-title">Menu</li>
+
+                        <li>
+                            <a href="{% url 'recrutement:espace-personnel-recruteur' %}" class="waves-effect"><i class='bx bx-home-smile'></i><span class="badge badge-pill badge-primary float-right"></span><span>Tableau de bord</span></a>
+                        </li>
+
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="bx bx-file"></i><span>Mon compte</span></a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="{% url 'recrutement:mon-compte' %}">Profile</a></li>
+                                <li><a href="{% url 'recrutement:modifier_compte' %}">Modifier les infos du compte</a></li>
+                                <li><a href="{% url 'recrutement:supprimer_compte' %}">supprimer le compte</a></li>
+                                
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="{% url 'recrutement:creer-offre' %}" class=" waves-effect"><i class="bx bx-user-voice"></i><span>Creer une offre</span></a>
+                            
+                        </li>
+                        
+                        <li>
+                            <a href="{% url 'recrutement:liste-offres' %}" class=" waves-effect"><i class="bx bx-align-left"></i><span>Liste des offres</span></a>
+                            
+                        </li>
+
+                        <li>
+                            <a href="{% url 'recrutement:boite_reception' %}" class=" waves-effect"><i class="bx bx-envelope"></i><span>Boite de reception</span><span class="badge badge-pill badge-primary float-right">{{ count_messages_recus }}</span></a>
+                            
+                        </li>
+
+                        <li>
+                            <a href="{% url 'recrutement:envoyer_message' %}" class=" waves-effect"><i class="bx bx-pen"></i><span>Nouveau message</span></a>
+                            
+                        </li>
+
+                        <li>
+                            <a href="{% url 'recrutement:liste_messages_envoyes' %}" class=" waves-effect"><i class="bx bx-paper-plane"></i><span>Message envoyé</span></a>
+                            
+                        </li>
+                        
+
+                       
+
+                       
+
+                    </ul>
+                </div>
+                <!-- Sidebar -->
+            </div>
+        </div>
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+
+            <div class="page-content">
+                <div class="container-fluid">
+
+       
+                    <div class="main-content">
+                        <style>
+                            .chart-container {
+                                width: 900px;
+                                height: 500px;
+                            }
+                        </style>
+                    
+                        <div class="chart-container" style="height: 400px;">
+                            <canvas id="salaireChart"></canvas>
+                        </div>
+                    
+                        <div class="chart-container" style="height: 400px;">
+                            <canvas id="documentsChart"></canvas>
+                        </div>
+                    
+                        <div class="chart-container" style="height: 400px;">
+                            <canvas id="candidatureChart"></canvas>
+                        </div>
+                    
+                        <div class="chart-container" style="height: 400px;">
+                            <canvas id="offreChart"></canvas>
+                        </div>
+                    
+                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                    
+                        <script>
+                            const salaireCtx = document.getElementById('salaireChart');
+                            const documentsCtx = document.getElementById('documentsChart');
+                            const candidatureCtx = document.getElementById('candidatureChart');
+                            const offreCtx = document.getElementById('offreChart');
+                    
+                            new Chart(salaireCtx, {
+                                type: 'line',
+                                data: {
+                                    labels: ['Nombre de candidats', 'Nombre de candidatures créées', 'Nombre de candidatures validées'],
+                                    datasets: [{
+                                        label: 'Statistiques des candidats',
+                                        data: [
+                                            {{ nombre_candidats }},
+                                            {{ nombre_candidatures }},
+                                            {{ nombre_candidatures_validees }}
+                                        ],
+                                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                                        borderColor: 'rgba(255, 99, 132, 1)',
+                                        borderWidth: 1,
+                                        fill: false,
+                                    }]
+                                },
+                                options: {
+                                    maintainAspectRatio: false,
+                                    responsive: true,
+                                    scales: {
+                                        x: {
+                                            beginAtZero: true,
+                                        },
+                                        y: {
+                                            beginAtZero: true,
+                                        },
+                                    },
+                                },
+                            });
+                    
+                            new Chart(documentsCtx, {
+                                type: 'line',
+                                data: {
+                                    labels: ['Nombre de documents moyens par candidature', 'Fréquence de création de candidatures'],
+                                    datasets: [{
+                                        label: 'Statistiques des documents',
+                                        data: [
+                                            {{ nombre_documents_moyen }},
+                                            {% for item in frequence_creation %}
+                                                {{ item.count }},
+                                            {% endfor %}
+                                        ],
+                                        backgroundColor: 'rgba(75, 192, 192, 0.5)',
+                                        borderColor: 'rgba(75, 192, 192, 1)',
+                                        borderWidth: 1,
+                                        fill: false,
+                                    }]
+                                },
+                                options: {
+                                    maintainAspectRatio: false,
+                                    responsive: true,
+                                    scales: {
+                                        x: {
+                                            beginAtZero: true,
+                                        },
+                                        y: {
+                                            beginAtZero: true,
+                                        },
+                                    },
+                                },
+                            });
+                    
+                            new Chart(candidatureCtx, {
+                                type: 'line',
+                                data: {
+                                    labels: ['Nombre d\'offres créées', 'Nombre de documents moyens par offre'],
+                                    datasets: [{
+                                        label: 'Statistiques des candidatures',
+                                        data: [
+                                            {{ nombre_offres }},
+                                            {{ nombre_documents_moyen_par_offre }}
+                                        ],
+                                        backgroundColor: 'rgba(255, 159, 64, 0.5)',
+                                        borderColor: 'rgba(255, 159, 64, 1)',
+                                        borderWidth: 1,
+                                        fill: false,
+                                    }]
+                                },
+                                options: {
+                                    maintainAspectRatio: false,
+                                    responsive: true,
+                                    scales: {
+                                        x: {
+                                            beginAtZero: true,
+                                        },
+                                        y: {
+                                            beginAtZero: true,
+                                        },
+                                    },
+                                },
+                            });
+                    
+                            new Chart(offreCtx, {
+                                type: 'line',
+                                data: {
+                                    labels: ['Nombre d\'offres en cours', 'Nombre d\'offres terminées'],
+                                    datasets: [{
+                                        label: 'Statistiques des offres',
+                                        data: [
+                                            {{ nombre_offres_en_cours }},
+                                            {{ nombre_offres_terminées }}
+                                        ],
+                                        backgroundColor: 'rgba(153, 102, 255, 0.5)',
+                                        borderColor: 'rgba(153, 102, 255, 1)',
+                                        borderWidth: 1,
+                                        fill: false,
+                                    }]
+                                },
+                                options: {
+                                    maintainAspectRatio: false,
+                                    responsive: true,
+                                    scales: {
+                                        x: {
+                                            beginAtZero: true,
+                                        },
+                                        y: {
+                                            beginAtZero: true,
+                                        },
+                                    },
+                                },
+                            });
+                        </script>
+                    </div>
+                    
+    
+                   <div class="d-print-none my-4">
+                    <div class="text-right">
+                        <a href="javascript:window.print()" class="btn btn-primary waves-effect waves-light"><i class="fa fa-print m-r-5"></i> Imprimé</a>
+                        
+                    </div>
+                </div>
+                                    
+
+                        <div class="col-xl-6">
+                            <!-- end card-->
+                        </div> <!-- end col -->
+                    </div>
+
+                </div> <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            Tableau de bord
+                        </div>
+                        
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+        <!-- end main content-->
+
+    </div>
+    <!-- END layout-wrapper -->
+
+    <!-- Overlay-->
+    <div class="menu-overlay"></div>
+
+
+    <!-- jQuery  -->
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/metismenu.min.js' %}"></script>
+    <script src="{% static 'assets/js/waves.js' %}"></script>
+    <script src="{% static 'assets/js/simplebar.min.js' %}"></script>
+
+    <!-- Morris Js-->
+    <script src="{% static 'plugins/morris-js/morris.min.js' %}"></script>
+    <!-- Raphael Js-->
+    <script src="{% static 'plugins/raphael/raphael.min.js' %}"></script>
+
+    <!-- Morris Custom Js-->
+    <script src="{% static 'assets/pages/dashboard-demo.js' %}"></script>
+
+    <!-- App js -->
+    <script src="{% static 'assets/js/theme.js' %}"></script>
+    <script src="{% static 'assets/js/inactivity_redirect.js' %}"></script>
+
+</body>
+
+
+<!-- Mirrored from myrathemes.com/lunoz/layouts/vertical/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Jun 2023 14:37:10 GMT -->
+</html>

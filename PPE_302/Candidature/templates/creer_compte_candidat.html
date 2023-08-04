@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    
+<!-- Mirrored from myrathemes.com/lunoz/layouts/vertical/pages-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Jun 2023 14:38:27 GMT -->
+<head>
+        <meta charset="utf-8" />
+        <title>Créer un compte</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+        <meta content="MyraStudio" name="author" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}">
+    
+        <!-- App css -->
+        <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+        <link href="{% static 'assets/css/theme.min.css' %}" rel="stylesheet" type="text/css" />
+    
+    </head>
+
+<body class="bg-primary">
+
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="d-flex align-items-center min-vh-100">
+                        <div class="w-100 d-block my-5">
+                            <div class="row justify-content-center">
+                                <div class="col-md-8 col-lg-5">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="text-center mb-4 mt-3">
+                                                <a href="index.html">
+                                                    <span><img src="static/assets/images/logo-dark.png" alt="" height="26"></span>
+                                                </a>
+                                            </div>
+                                            <form method="POST" action="{% url 'candidat:inscriptioncandidat' %}" class="p-2">
+                                                            {% if error_message %}
+                                                            <p class="error">{{ error_message }}</p>
+                                                            {% endif %}
+                                                            {% csrf_token %}
+                                                <div class="form-group">
+                                                    <label for="username">Nom</label>
+                                                    <input class="form-control" type="text" name="nom" required="" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="username">Prenom</label>
+                                                    <input class="form-control" type="text" name="prenom" required="" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="username">Age</label>
+                                                    <input class="form-control" type="text" name="age" required="" placeholder="Âge" pattern="[0-9]+" >
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="emailaddress">Email</label>
+                                                    <input class="form-control" type="email" name="email" required="" placeholder="exemple: john@deo.com">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="password">Password</label>
+                                                    <input class="form-control" type="password" required="" name="password" placeholder="mot de passe" minlength="8" >
+                                        
+                                                </div>
+                                                <div class="form-group">
+                                                <select name="fonction" required class="form-control" >
+                                                    <option value="" selected disabled>Choisissez une fonction</option>
+                                                    
+                                                    <option value="Candidat">Candidat</option>
+                                                    
+                                                </select>
+                                                 </div>
+                                                
+                                                <div class="mb-3 text-center">
+                                                    <button class="btn btn-primary btn-block" type="submit"> S'inscrire</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <!-- end card-body -->
+                                    </div>
+                                    <!-- end card -->
+            
+                                    <div class="row mt-4">
+                                        <div class="col-sm-12 text-center">
+                                            <p class="text-white-50 mb-0">Vous avez un compte? <a href="{% url 'candidat:candidatLog' %}" class="text-white-50 ml-1"><b>Se connecté</b></a></p>
+                                        </div>
+                                    </div>
+            
+                                </div>
+                                <!-- end col -->
+                            </div>
+                            <!-- end row -->
+                        </div> <!-- end .w-100 -->
+                    </div> <!-- end .d-flex -->
+                </div> <!-- end col-->
+            </div> <!-- end row -->
+        </div>
+        <!-- end container -->
+    </div>
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Message</h5>
+                    <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{% url 'candidat:modifcandidat' %}"class="needs-validation" novalidate >
+                        
+                        {% if messages %}
+                            <ul id="notifications-list">
+                                {% for message in messages %}
+                                    <li id="message"  >{{ message }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% else %}
+                            <p>Aucune notification disponible.</p>
+                        {% endif %}
+                    
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary waves-effect waves-light" data-dismiss="modal">Close</button>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end page -->
+
+    <!-- jQuery  -->
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/metismenu.min.js' %}"></script>
+    <script src="{% static 'assets/js/waves.js' %}"></script>
+    <script src="{% static 'assets/js/simplebar.min.js' %}"></script>
+
+    <!-- App js -->
+    <script src="{% static 'static/assets/js/theme.js' %}"></script>
+   
+
+</body>
+
+
+<!-- Mirrored from myrathemes.com/lunoz/layouts/vertical/pages-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Jun 2023 14:38:27 GMT -->
+</html>

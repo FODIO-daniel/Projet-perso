@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+
+<!-- Mirrored from myrathemes.com/lunoz/layouts/vertical/forms-validation.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Jun 2023 14:39:09 GMT -->
+<head>
+    <meta charset="utf-8" />
+    <title>Lunoz - Admin & Dashboard Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="MyraStudio" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}">
+
+    <!-- App css -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/css/theme.min.css' %}" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+
+        <header id="page-topbar">
+            <div class="navbar-header">
+
+                <div class="d-flex align-items-left">
+                    
+
+                    <div class="dropdown d-none d-sm-inline-block">
+                        
+                        
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center">
+
+                    
+                    
+                    
+
+                    <div class="dropdown d-inline-block ml-2">
+                        <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img 
+                                >
+                            <span class="d-none d-sm-inline-block ml-1">{{ nom }}</span>
+                            <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            
+                            <a class="dropdown-item d-flex align-items-center justify-content-between"
+                            href="{% url 'comptable:mon-compte' %}">
+                                <span>Profile</span>
+                                <span>
+                                    <span class="badge badge-pill badge-warning">1</span>
+                                </span>
+                            </a>
+                            
+                           
+                            <a class="dropdown-item d-flex align-items-center justify-content-between"
+                            href="{% url 'comptable:logout' %}">
+                                <span>Log Out</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="vertical-menu">
+
+            <div data-simplebar class="h-100">
+
+                
+
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <!-- Left Menu Start -->
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        <li class="menu-title">Menu</li>
+
+                        <li>
+                            <a href="{% url 'comptable:espace-personnel' %}" class="waves-effect"><i class='bx bx-home-smile'></i><span class="badge badge-pill badge-primary float-right"></span><span>Tableau de bord</span></a>
+                        </li>
+
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="bx bx-file"></i><span>Mon compte</span></a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="{% url 'comptable:mon-compte' %}">Profile</a></li>
+                                <li><a href="{% url 'comptable:modifier_compte' %}">Modifier les infos du compte</a></li>
+                                <li><a href="{% url 'comptable:supprimer_compte' %}">supprimer le compte</a></li>
+                                
+                            </ul>
+                        </li>
+
+                        <li><a href="{% url 'comptable:form-salaire' %}" class=" waves-effect"><i class="bx bx-book-bookmark"></i><span>Registre des salaires</span></a></li>
+
+                        <li><a href="{% url 'comptable:liste-salaire' %}" class=" waves-effect"><i class="bx bx-align-left"></i><span>Liste des salaires</span></a></li>
+
+                        
+
+                        <li>
+                            <a href="{% url 'comptable:rapport' %}" class=" waves-effect"><i class="bx bx-bar-chart-alt"></i><span>Informations salaires</span></a>
+                            
+                        </li>
+
+
+                        <li>
+                            <a href="{% url 'comptable:boite_reception' %}" class=" waves-effect"><i class="bx bx-envelope"></i><span>Boite de reception</span><span class="badge badge-pill badge-primary float-right">{{ count_messages_recus }}</span></a>
+                            
+                        </li>
+
+                        <li>
+                            <a href="{% url 'comptable:envoyer_message' %}" class=" waves-effect"><i class="bx bx-pen"></i><span>Nouveau message</span></a>
+                            
+                        </li>
+
+                        <li>
+                            <a href="{% url 'comptable:liste_messages_envoyes' %}" class=" waves-effect"><i class="bx bx-paper-plane"></i><span>Message envoyé</span></a>
+                            
+                        </li>
+
+                        
+
+
+                       
+
+                    </ul>
+                </div>
+                <!-- Sidebar -->
+            </div>
+        </div>
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                                <h4 class="mb-0 font-size-18">Vos informations</h4>
+
+                                
+                                
+                            </div>
+                        </div>
+                    </div>     
+                    <!-- end page title -->
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                    
+                                    
+                                    <p class="card-subtitle mb-4">Ici vous avez la liste de vos information de compte clické sur modifier pour modifier ces informations</p>
+                                    <form method="POST" action="{% url 'comptable:modifier_compte' %}"class="needs-validation" novalidate>
+                                      {% csrf_token %}
+                                      {{ form.as_p }}
+                                  
+                                      <button type="submit" class="btn btn-primary waves-effect waves-light">Modifié</button>
+                                    </form>
+                    
+                                </div> <!-- end card-body-->
+                            </div> <!-- end card-->
+                        </div> <!-- end col -->
+                    </div>
+                    <!-- end row-->
+
+                    
+
+
+                </div> <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            Modification du compte
+                        </div>
+                       
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+        <!-- end main content-->
+
+    </div>
+    <!-- END layout-wrapper -->
+
+    <!-- Overlay-->
+    <div class="menu-overlay"></div>
+
+
+    <!-- jQuery  -->
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/metismenu.min.js' %}"></script>
+    <script src="{% static 'assets/js/waves.js' %}"></script>
+    <script src="{% static 'assets/js/simplebar.min.js' %}"></script>
+
+    <!-- Validation custom js-->
+    <script src="{% static 'assets/pages/validation-demo.js' %}"></script>
+
+    <!-- App js -->
+    <script src="{% static 'assets/js/theme.js' %}"></script>
+    <script src="{% static 'assets/js/inactivity_redirect.js' %}"></script>
+
+</body>
+
+
+<!-- Mirrored from myrathemes.com/lunoz/layouts/vertical/forms-validation.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Jun 2023 14:39:09 GMT -->
+</html>

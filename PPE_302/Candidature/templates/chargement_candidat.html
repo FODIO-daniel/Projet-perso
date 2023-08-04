@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chargement</title>
+    <style>
+        /* Ajoutez du style CSS pour la mise en page de la page de chargement */
+        body {
+            background-color: #346ee0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+
+        .loader {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            animation: spin 2s ease-in-out infinite, fade-out 1s ease-in-out forwards 6s;
+            margin-right: 20px; /* Espace entre le loader et le texte */
+            margin-left: 20px; /* Espace entre le loader et le bord gauche */
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loader:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 6px solid #ffffff;
+            border-color: #ffffff;
+            border-radius: 50%;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 36px;
+            opacity: 0;
+            animation: fade-in 1s ease-in-out 1s forwards;
+            text-align: center; /* Centrer le texte */
+        }
+
+        @keyframes fade-in {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes fade-out {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+    </style>
+    <script>
+        setTimeout(function() {
+            window.location.href = "{% url 'candidat:candidatLog' %}";
+        }, 8000); // Redirige vers la vue 'login_view' après 10 secondes (10000 millisecondes)
+    </script>
+</head>
+<body>
+    <div class="loader"></div>
+    <h1>SmartHR</h1>
+</body>
+</html>

@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+
+<!-- Mirrored from myrathemes.com/lunoz/layouts/vertical/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Jun 2023 14:36:13 GMT -->
+<head>
+    <meta charset="utf-8" />
+    <title>Tableau de bord</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="MyraStudio" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}">
+
+    <!-- App css -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/css/theme.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/aos/aos.css" rel="stylesheet' %}">
+    <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+
+        <header id="page-topbar">
+            <div class="navbar-header">
+
+                <div class="d-flex align-items-left">
+                    
+
+                    <div class="dropdown d-none d-sm-inline-block">
+                        
+                        
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center">
+
+                    
+                    
+                    
+                    <div class="dropdown d-inline-block ml-2">
+                        <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <img  
+                                >
+                            <span class="d-none d-sm-inline-block ml-1">Bienvenu Mr/Mme {{ nom }} dans votre application pour les {{ fonction }}s</span>
+                            <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-right">
+                            
+                            <a class="dropdown-item d-flex align-items-center justify-content-between"
+                            href="{% url 'candidat:moncomptecandidat' %}">
+                                <span>Profile</span>
+                                <span>
+                                    <span class="badge badge-pill badge-warning">1</span>
+                                </span>
+                            </a>
+                            
+                           
+                            <a class="dropdown-item d-flex align-items-center justify-content-between"
+                            href="{% url 'candidat:logout-candidat' %}">
+                                <span>Log Out</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </header>
+
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="vertical-menu">
+
+            <div data-simplebar class="h-100">
+
+                
+
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <!-- Left Menu Start -->
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        <li class="menu-title">Menu</li>
+
+                        <li>
+                            <a href="{% url 'candidat:espacecandidat' %}" class="waves-effect"><i class='bx bx-home-smile'></i><span class="badge badge-pill badge-primary float-right"></span><span>Tableau de bord</span></a>
+                        </li>
+
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="bx bx-file"></i><span>Mon compte</span></a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="{% url 'candidat:moncomptecandidat' %}">Profile</a></li>
+                                <li><a href="{% url 'candidat:modifcandidat' %}">Modifier les infos du compte</a></li>
+                                <li><a href="">supprimer le compte</a></li>
+                                
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="{% url 'candidat:listeoffres' %}" class=" waves-effect"><i class="bx bx-align-left"></i><span>Liste des offfres</span></a>
+                            
+                        </li>
+                        
+                        <li>
+                            <a href=""  data-toggle="modal" data-target="#exampleModalCenter"><i class="bx bx-bell"></i><span>Notifications</span><span class="badge badge-pill badge-primary float-right">{{ nombre_notif }}</span></a>
+                            
+                        </li>
+
+                        <li>
+                            <a href="{% url 'candidat:sitecandidat' %}" class=" waves-effect"><i class="bx bx-globe"></i><span>Retour au site</span></a>
+                            
+                        </li>
+
+                        
+
+                        
+
+                        <!-- Modal -->
+                       
+
+                       
+
+                       
+
+                    </ul>
+                </div>
+                <!-- Sidebar -->
+            </div>
+        </div>
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+<div class="main-content">
+
+    <div class="page-content">
+        <div class="container-fluid">
+                    
+        <section class="counts section-bg">
+            <div class="container">
+      
+              <div class="row">
+      
+                <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up">
+                  <div class="count-box">
+                    <p>Vous avez envoyé </p>
+                    <i class="bi bi-simple-smile" style="color: #20b38e;"></i>
+                    <span data-purecounter-start="0" data-purecounter-end="{{ nombre_candidature }}" data-purecounter-duration="1" class="purecounter"></span>
+                    <p> candidatures</p>
+                  </div>
+                </div>
+      
+                <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up" data-aos-delay="200">
+                  <div class="count-box">
+                    <p>Vous avez réussi a </p>
+                    <i class="bi bi-document-folder" style="color: #c042ff;"></i>
+                    <span data-purecounter-start="0" data-purecounter-end="{{ nombre_reussi }}" data-purecounter-duration="1" class="purecounter"></span>
+                    <p> candidatures   </p>
+                  </div>
+                </div>
+      
+                <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up" data-aos-delay="400">
+                  <div class="count-box">
+                    <p>Vous avez répondu a </p>
+                    <i class="bi bi-live-support" style="color: #46d1ff;"></i>
+                    <span data-purecounter-start="0" data-purecounter-end="{{ nombre_candidature }}" data-purecounter-duration="1" class="purecounter"></span>
+                    <p>offres </p>
+                  </div>
+                </div>
+      
+                <div class="col-lg-3 col-md-6 text-center" data-aos="fade-up" data-aos-delay="600">
+                  <div class="count-box">
+                    <p>Vous avez reçus</p>
+                    <i class="bi bi-users-alt-5" style="color: #ffb459;"></i>
+                    <a href="" class=" waves-effect" data-toggle="modal" data-target="#exampleModalCenter"> <span data-purecounter-start="0" data-purecounter-end="{{ nombre_notif }}" data-purecounter-duration="1" class="purecounter"></span></a>
+                    <p>notification</p>
+                    
+                 
+          </section>
+        </div> <!-- end card-body-->
+    </div> <!-- end card-->
+</div>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Message</h5>
+                <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+               
+                    
+                    {% if messages %}
+                        <ul id="notifications-list">
+                            {% for message in messages %}
+                                <li id="message"  >{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% else %}
+                        <p>Aucune notification disponible.</p>
+                    {% endif %}
+                
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect waves-light" data-dismiss="modal">Close</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="aide" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Message</h5>
+                <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Bonjour et bienvenu sur l'appli candidat téléchargé le manuel d'utilisation ci dessous
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary waves-effect waves-light" data-dismiss="modal">Close</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+                                    
+
+                        <div class="col-xl-6">
+                            <!-- end card-->
+                        </div> <!-- end col -->
+                    </div>
+
+                </div> <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            Tableau de bord
+                        </div>
+                        
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+        <!-- end main content-->
+
+    </div>
+    <!-- END layout-wrapper -->
+
+    <!-- Overlay-->
+    <div class="menu-overlay"></div>
+
+
+    <!-- jQuery  -->
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/metismenu.min.js' %}"></script>
+    <script src="{% static 'assets/js/waves.js' %}"></script>
+    <script src="{% static 'assets/js/simplebar.min.js' %}"></script>
+
+    <!-- Morris Js-->
+    <script src="{% static 'plugins/morris-js/morris.min.js' %}"></script>
+    <!-- Raphael Js-->
+    <script src="{% static 'plugins/raphael/raphael.min.js' %}"></script>
+
+    <!-- Morris Custom Js-->
+    <script src="{% static 'assets/pages/dashboard-demo.js' %}"></script>
+
+    <!-- App js -->
+    <script src="{% static 'assets/js/theme.js' %}"></script>
+    <script src="{% static 'assets/js/inactivity_redirect.js' %}"></script>
+    <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+    <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+    <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{% static 'assets/js/main.js' %}"></script>
+    <script src="{% static 'assets/js/inactivity_redirect_candidat.js' %}"></script>
+
+</body>
+
+
+<!-- Mirrored from myrathemes.com/lunoz/layouts/vertical/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Jun 2023 14:37:10 GMT -->
+</html>

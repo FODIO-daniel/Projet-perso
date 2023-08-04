@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+
+<!-- Mirrored from myrathemes.com/lunoz/layouts/vertical/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Jun 2023 14:36:13 GMT -->
+<head>
+    <meta charset="utf-8" />
+    <title>Liste offres</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
+    <meta content="MyraStudio" name="author" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/images/favicon.ico' %}">
+
+    <!-- App css -->
+    <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/css/icons.min.css' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'assets/css/theme.min.css' %}" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+
+        <header id="page-topbar">
+            <div class="navbar-header">
+
+                <div class="d-flex align-items-left">
+                    
+
+                    <div class="dropdown d-none d-sm-inline-block">
+                        
+                        
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center">
+
+                    
+                    
+                    
+                    <div class="dropdown d-inline-block ml-2">
+                       
+                       
+
+                </div>
+            </div>
+        </header>
+
+        <!-- ========== Left Sidebar Start ========== -->
+        <div class="vertical-menu">
+
+            <div data-simplebar class="h-100">
+
+                
+
+                <!--- Sidemenu -->
+                <div id="sidebar-menu">
+                    <!-- Left Menu Start -->
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        <li class="menu-title">Menu</li>
+
+                        <li>
+                            <a href="{% url 'candidat:sitecandidat' %}" class=" waves-effect"><i class="bx bx-doughnut-chart"></i><span>Retour au site</span></a>
+                            
+                        </li>  
+
+                       
+                        
+
+                       
+
+                       
+
+                    </ul>
+                </div>
+                <!-- Sidebar -->
+            </div>
+        </div>
+        <!-- Left Sidebar End -->
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+                                <h4 class="mb-0 font-size-18">Vos informations</h4>
+
+                                
+                                
+                            </div>
+                        </div>
+                    </div>     
+                    <!-- end page title -->
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                    
+                                    
+                                    <p class="card-subtitle mb-4">Ici vous avez la liste des offres en cours</p>
+                                    
+                                    <table class="table table-bordered mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Titre</th>
+                                                <th>Description</th>
+                                                <th>Date de l'offre</th>
+                                                <th>Statut de l'offre</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for offre in offres %}
+                                                <tr>
+                                                    <td>{{ offre.titre }}</td>
+                                                    <td>{{ offre.description|safe|truncatechars:50  }}</td>
+                                                    <td>{{ offre.date_offre }}</td>
+                                                    <td>
+                                                        {% if offre.valide %}
+                                                            En cours
+                                                        {% else %}
+                                                            Terminé
+                                                        {% endif %}
+                                                    </td>
+                                                    <td>
+                                                        {% if offre.a_deja_postule %}
+                                                            <strong>Déjà postulé</strong>
+                                                        {% else %}
+                                                            <a href="{% url 'candidat:postuler' offre.id %}">Postuler</a>
+                                                        {% endif %}
+                                                        <a href="{% url 'candidat:detail_offre' offre.id %}">Détail</a>  
+                                                    </td>
+                                                </tr>
+                                            {% empty %}
+                                                <tr>
+                                                    <td colspan="5">Aucune offre disponible.</td>
+                                                </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                    
+                    
+                                </div> <!-- end card-body-->
+                            </div> <!-- end card-->
+                        </div> <!-- end col -->
+                    </div>
+                    <!-- end row-->
+
+                    
+
+
+                </div> <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+        
+                    
+                
+
+                
+                                    
+
+                        <div class="col-xl-6">
+                            <!-- end card-->
+                        </div> <!-- end col -->
+                    </div>
+
+                </div> <!-- container-fluid -->
+            </div>
+            <!-- End Page-content -->
+
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                           Liste des offres
+                        </div>
+                        
+                    </div>
+                </div>
+            </footer>
+
+        </div>
+        <!-- end main content-->
+
+    </div>
+    <!-- END layout-wrapper -->
+
+    <!-- Overlay-->
+    <div class="menu-overlay"></div>
+
+
+    <!-- jQuery  -->
+    <script src="{% static 'assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'assets/js/metismenu.min.js' %}"></script>
+    <script src="{% static 'assets/js/waves.js' %}"></script>
+    <script src="{% static 'assets/js/simplebar.min.js' %}"></script>
+
+    <!-- Morris Js-->
+    <script src="{% static 'plugins/morris-js/morris.min.js' %}"></script>
+    <!-- Raphael Js-->
+    <script src="{% static 'plugins/raphael/raphael.min.js' %}"></script>
+
+    <!-- Morris Custom Js-->
+    <script src="{% static 'assets/pages/dashboard-demo.js' %}"></script>
+
+    <!-- App js -->
+    <script src="{% static 'assets/js/theme.js' %}"></script>
+    <script src="{% static 'assets/js/inactivity_redirect.js' %}"></script>
+
+</body>
+
+
+<!-- Mirrored from myrathemes.com/lunoz/layouts/vertical/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 19 Jun 2023 14:37:10 GMT -->
+</html>
